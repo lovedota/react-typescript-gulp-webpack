@@ -1,0 +1,31 @@
+{
+  "name": "react-flux-sample-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "flux": "^2.1.1",
+    "immutable": "^3.7.6",
+    "keymirror": "^0.1.1",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-inject": "^3.0.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.10.0",
+    "gulp-webpack": "^1.5.0",
+    "superstatic": "^4.0.1",
+    "typescript": "next"
+  }
+}
