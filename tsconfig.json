@@ -1,0 +1,43 @@
+{
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es2015",
+        "jsx": "react",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "experimentalAsyncFunctions": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "**/*.tsx",
+        "!node_modules/**"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "files": [
+        "src/js/actions/home-actions.ts",
+        "src/js/actions/main-actions.ts",
+        "src/js/dispatcher/app-dispatcher.ts",
+        "src/js/global.d.ts",
+        "src/js/stores/home-store.ts",
+        "src/js/stores/main-store.ts",
+        "src/js/utils/custom-type.ts",
+        "typings/flux/flux.d.ts",
+        "typings/immutable/immutable.d.ts",
+        "typings/jquery/jquery.d.ts",
+        "typings/react/react-dom.d.ts",
+        "typings/react/react.d.ts",
+        "typings/tsd.d.ts",
+        "src/js/components/about/about-page.tsx",
+        "src/js/components/home/home-cities.tsx",
+        "src/js/components/home/home-map.tsx",
+        "src/js/components/home/home-page.tsx",
+        "src/js/components/home/home-weather.tsx",
+        "src/js/components/main/main-header.tsx",
+        "src/js/components/main/main-page.tsx",
+        "src/js/main.tsx"
+    ]
+}

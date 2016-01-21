@@ -3,10 +3,13 @@
 - It uses *gulp-typescript* to extract *ts, tsx* files to *js*
 - Then uses *gulp-webpack* to bundle it into one file
 
+#Demo
+![Demo Image](https://azzm1q-bn1305.files.1drv.com/y3md44l9NYNLx8wGMnygWK1fnK8n6dcRtL6sEeaEIORsvzuOje9oKgzFjIERpXosCdnU9CgWkuncAcyQRHMiqB7p2zDze-StT3n9MPOzBqAdyG3WpIE4KjsZb84yuLYOiFbYBdX0iHqo5P7woRHAhaIZ11-dubkUWfErV_TMFUtHVQ/new-flux-store-utils.gif?psid=1)
+
 # Run
 
 ```
-npm install 
+npm install
 npm install -g gulp
 npm install -g tsd
 
