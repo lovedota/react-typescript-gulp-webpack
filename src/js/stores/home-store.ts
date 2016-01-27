@@ -1,7 +1,7 @@
 import {ReduceStore} from "flux/utils";
 import Dispatcher from "../dispatcher/app-dispatcher";
 
-import { Map, List } from "immutable";
+import { Map } from "immutable";
 
 interface Action extends BaseAction {
     cities: City[];
@@ -11,7 +11,7 @@ interface Action extends BaseAction {
 }
 
 class HomeStore extends ReduceStore<any> {
-    getInitialState(): any {
+    public getInitialState(): any {
         return Map<string, any>({
             cities: <City[]>[],
             selectedCityIds: [],
@@ -20,7 +20,7 @@ class HomeStore extends ReduceStore<any> {
         });
     }
 
-    reduce(state: Map<string, any>, action: Action): any {
+    public reduce(state: Map<string, any>, action: Action): any {
         switch (action.type) {
             case "home/cities":
                 return state.set("isLoading", true);
@@ -38,7 +38,8 @@ class HomeStore extends ReduceStore<any> {
                     .set("isLoading", true)
                     .set("selectedCityIds", action.selectedCityIds);
 
-            case "home/city/weather":
+            case "home/city/weather/success":
+            case "home/city/weather/error":
                 return state
                     .set("isLoading", false);
 

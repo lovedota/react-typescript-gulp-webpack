@@ -8,15 +8,15 @@ interface Action extends BaseAction {
 }
 
 class WeatherStore extends ReduceStore<any> {
-    getInitialState(): Map<string, any> {
+    public getInitialState(): Map<string, any> {
         return Map({
             weathers: []
         });
     }
 
-    reduce(state: Map<string, any>, action: Action): any {
+    public reduce(state: Map<string, any>, action: Action): any {
         switch (action.type) {
-            case "home/city/weather":
+            case "home/city/weather/success":
                 return state.set("weathers", action.weathers);
 
             default:

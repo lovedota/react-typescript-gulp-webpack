@@ -1,5 +1,7 @@
 #Description
 - This project is for learning Typescript with React
+- This project uses new *Flux Utils ReduceStore* pattern https://facebook.github.io/flux/docs/flux-utils.html
+- This project uses *tslint* for checking coding styles http://palantir.github.io/tslint/
 - It uses *gulp-typescript* to extract *ts, tsx* files to *js*
 - Then uses *gulp-webpack* to bundle it into one file
 

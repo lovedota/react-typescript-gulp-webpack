@@ -23,7 +23,10 @@ export default {
         $.ajax(`${citiesWeatherApi}?id=${selectedCityIds.join(",")}&units=metric&appid=${appId}`, {crossDomain: true})
             .done((data: any) => {
                 console.log(data);
-                dispatch({type: "home/city/weather", weathers: data.list});
+                dispatch({type: "home/city/weather/success", weathers: data.list});
+            })
+            .fail(error => {
+                dispatch({type: "home/cities/weather/error", error});
             });
     }
 };

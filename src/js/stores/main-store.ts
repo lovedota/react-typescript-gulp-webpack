@@ -29,14 +29,14 @@ class MainStore extends ReduceStore<any> {
     private _state;
     private _views = List<View>();
 
-    getInitialState(): any {
+    public getInitialState(): any {
         return Map({
             links: [],
             currentView: null
         });
     }
 
-    registerComponent(title: string, component: PageComponent, isDefault = false) {
+    public registerComponent(title: string, component: PageComponent, isDefault = false) {
         let view: View = {
             id: Guid.newGuid(),
             title,
@@ -50,7 +50,7 @@ class MainStore extends ReduceStore<any> {
         }
     }
 
-    reduce(state: Map<string, any>, action: Action): any {
+    public reduce(state: Map<string, any>, action: Action): any {
         switch (action.type) {
             case "main/current":
                 let currentView = this._views.find(view => view.id.toString() === action.viewId);
