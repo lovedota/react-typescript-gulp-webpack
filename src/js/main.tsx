@@ -4,7 +4,10 @@ import "bootstrap/css";
 import "bootstrap-select/js";
 import "bootstrap-select/css";
 
+ /* tslint:disable:no-unused-variable */
 import * as React from "react";
+/* tslint:enable:no-unused-variable */
+
 import * as ReactDOM from "react-dom";
 
 import MainStore from "./stores/main-store";

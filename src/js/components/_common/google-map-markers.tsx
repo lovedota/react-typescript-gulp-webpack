@@ -9,7 +9,7 @@ interface Props {
 class GoogleMapMarkers extends React.Component<Props, any> {
     private $map: any;
 
-    componentDidMount() {
+    public componentDidMount() {
         GoogleMapHelpers.loadMap().then(() => {
             let defaultOptions = {
                     zoom: 12,
@@ -22,17 +22,18 @@ class GoogleMapMarkers extends React.Component<Props, any> {
         });
     }
 
-    componentDidUpdate() {
+    public componentDidUpdate() {
         this.processMarkers(this.props.places);
     }
 
-    processMarkers(places: Place[]) {
-        let defaultOptions = {
-               zoom: 6,
-               center: new window.google.maps.LatLng(49.47805, -123.84716),
-               mapTypeId: window.google.maps.MapTypeId.ROADMAP
-            },
-            bounds = new window.google.maps.LatLngBounds(),
+    public render() {
+        return (
+            <div id="map-canvas" style={{height: 400}}></div>
+        );
+    }
+
+    private processMarkers(places: Place[]) {
+        let bounds = new window.google.maps.LatLngBounds(),
             map = this.$map;
 
         places.forEach((loc) => {
@@ -51,12 +52,6 @@ class GoogleMapMarkers extends React.Component<Props, any> {
         });
 
         map.fitBounds(bounds);
-    }
-
-    render() {
-        return (
-            <div id="map-canvas" style={{height: 400}}></div>
-        );
     }
 }
 

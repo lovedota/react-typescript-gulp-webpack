@@ -76,7 +76,7 @@
 
 	var _homePage2 = _interopRequireDefault(_homePage);
 
-	var _aboutPage = __webpack_require__(209);
+	var _aboutPage = __webpack_require__(213);
 
 	var _aboutPage2 = _interopRequireDefault(_aboutPage);
 
@@ -41120,7 +41120,7 @@
 	    value: true
 	});
 
-	__webpack_require__(212);
+	__webpack_require__(202);
 
 	var _react = __webpack_require__(17);
 
@@ -41128,27 +41128,27 @@
 
 	var _utils = __webpack_require__(176);
 
-	var _homeStore = __webpack_require__(202);
+	var _homeStore = __webpack_require__(204);
 
 	var _homeStore2 = _interopRequireDefault(_homeStore);
 
-	var _weatherStore = __webpack_require__(203);
+	var _weatherStore = __webpack_require__(205);
 
 	var _weatherStore2 = _interopRequireDefault(_weatherStore);
 
-	var _homeActions = __webpack_require__(204);
+	var _homeActions = __webpack_require__(206);
 
 	var _homeActions2 = _interopRequireDefault(_homeActions);
 
-	var _homeCities = __webpack_require__(205);
+	var _homeCities = __webpack_require__(207);
 
 	var _homeCities2 = _interopRequireDefault(_homeCities);
 
-	var _homeMap = __webpack_require__(207);
+	var _homeMap = __webpack_require__(209);
 
 	var _homeMap2 = _interopRequireDefault(_homeMap);
 
-	var _homeWeather = __webpack_require__(208);
+	var _homeWeather = __webpack_require__(212);
 
 	var _homeWeather2 = _interopRequireDefault(_homeWeather);
 
@@ -41215,6 +41215,46 @@
 
 /***/ },
 /* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(203);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(13)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./home-page.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./home-page.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(7)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".home-page .map {\n  width: 700px;\n  height: 400px;\n  margin-right: 20px; }\n\n.home-page .weather {\n  width: 300px;\n  padding: 12px;\n  border: 1px solid silver; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41286,7 +41326,7 @@
 	exports.default = new HomeStore(_appDispatcher2.default);
 
 /***/ },
-/* 203 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41347,7 +41387,7 @@
 	exports.default = new WeatherStore(_appDispatcher2.default);
 
 /***/ },
-/* 204 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41379,7 +41419,7 @@
 	};
 
 /***/ },
-/* 205 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41394,11 +41434,11 @@
 
 	var React = _interopRequireWildcard(_react);
 
-	var _selectPicker = __webpack_require__(206);
+	var _selectPicker = __webpack_require__(208);
 
 	var _selectPicker2 = _interopRequireDefault(_selectPicker);
 
-	var _homeActions = __webpack_require__(204);
+	var _homeActions = __webpack_require__(206);
 
 	var _homeActions2 = _interopRequireDefault(_homeActions);
 
@@ -41443,7 +41483,7 @@
 	exports.default = HomeCities;
 
 /***/ },
-/* 206 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41528,7 +41568,7 @@
 	exports.default = SelectPicker;
 
 /***/ },
-/* 207 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41591,106 +41631,6 @@
 	}(React.Component);
 
 	exports.default = HomeMap;
-
-/***/ },
-/* 208 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(17);
-
-	var React = _interopRequireWildcard(_react);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var HomeWeather = function (_React$Component) {
-	    _inherits(HomeWeather, _React$Component);
-
-	    function HomeWeather() {
-	        _classCallCheck(this, HomeWeather);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(HomeWeather).apply(this, arguments));
-	    }
-
-	    _createClass(HomeWeather, [{
-	        key: "render",
-	        value: function render() {
-	            var cityWeathers = this.props.weathers.map(function (weather) {
-	                return {
-	                    id: weather.id,
-	                    main: weather.main,
-	                    weather: weather.weather[0],
-	                    name: weather.name
-	                };
-	            });
-	            return React.createElement("div", null, cityWeathers.map(function (cityWeather) {
-	                return React.createElement("div", { className: "media", key: cityWeather.id }, React.createElement("div", { className: "media-left" }, React.createElement("img", { src: "http://openweathermap.org/img/w/" + cityWeather.weather.icon + ".png" })), React.createElement("div", { className: "media-body" }, React.createElement("h6", { className: "media-heading" }, cityWeather.name, "  ", React.createElement("em", null, cityWeather.weather.main, " ", cityWeather.main.temp, " °C")), cityWeather.weather.description));
-	            }));
-	        }
-	    }]);
-
-	    return HomeWeather;
-	}(React.Component);
-
-	exports.default = HomeWeather;
-
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(17);
-
-	var React = _interopRequireWildcard(_react);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var AboutPage = function (_React$Component) {
-	    _inherits(AboutPage, _React$Component);
-
-	    function AboutPage() {
-	        _classCallCheck(this, AboutPage);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(AboutPage).apply(this, arguments));
-	    }
-
-	    _createClass(AboutPage, [{
-	        key: "render",
-	        value: function render() {
-	            return React.createElement("div", null, "This is About");
-	        }
-	    }]);
-
-	    return AboutPage;
-	}(React.Component);
-
-	exports.default = AboutPage;
 
 /***/ },
 /* 210 */
@@ -41756,16 +41696,16 @@
 	            this.processMarkers(this.props.places);
 	        }
 	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", { id: "map-canvas", style: { height: 400 } });
+	        }
+	    }, {
 	        key: "processMarkers",
 	        value: function processMarkers(places) {
 	            var _this3 = this;
 
-	            var defaultOptions = {
-	                zoom: 6,
-	                center: new window.google.maps.LatLng(49.47805, -123.84716),
-	                mapTypeId: window.google.maps.MapTypeId.ROADMAP
-	            },
-	                bounds = new window.google.maps.LatLngBounds(),
+	            var bounds = new window.google.maps.LatLngBounds(),
 	                map = this.$map;
 	            places.forEach(function (loc) {
 	                var infoWindow = new window.google.maps.InfoWindow({
@@ -41780,11 +41720,6 @@
 	                bounds.extend(marker.position);
 	            });
 	            map.fitBounds(bounds);
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            return React.createElement("div", { id: "map-canvas", style: { height: 400 } });
 	        }
 	    }]);
 
@@ -41859,41 +41794,101 @@
 /* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	"use strict";
 
-	// load the styles
-	var content = __webpack_require__(213);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./home-page.scss", function() {
-				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./home-page.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(17);
+
+	var React = _interopRequireWildcard(_react);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var HomeWeather = function (_React$Component) {
+	    _inherits(HomeWeather, _React$Component);
+
+	    function HomeWeather() {
+	        _classCallCheck(this, HomeWeather);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(HomeWeather).apply(this, arguments));
+	    }
+
+	    _createClass(HomeWeather, [{
+	        key: "render",
+	        value: function render() {
+	            var cityWeathers = this.props.weathers.map(function (weather) {
+	                return {
+	                    id: weather.id,
+	                    main: weather.main,
+	                    weather: weather.weather[0],
+	                    name: weather.name
+	                };
+	            });
+	            return React.createElement("div", null, cityWeathers.map(function (cityWeather) {
+	                return React.createElement("div", { className: "media", key: cityWeather.id }, React.createElement("div", { className: "media-left" }, React.createElement("img", { src: "http://openweathermap.org/img/w/" + cityWeather.weather.icon + ".png" })), React.createElement("div", { className: "media-body" }, React.createElement("h6", { className: "media-heading" }, cityWeather.name, "  ", React.createElement("em", null, cityWeather.weather.main, " ", cityWeather.main.temp, " °C")), cityWeather.weather.description));
+	            }));
+	        }
+	    }]);
+
+	    return HomeWeather;
+	}(React.Component);
+
+	exports.default = HomeWeather;
 
 /***/ },
 /* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(7)();
-	// imports
+	"use strict";
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	// module
-	exports.push([module.id, ".home-page .map {\n  width: 700px;\n  height: 400px;\n  margin-right: 20px; }\n\n.home-page .weather {\n  width: 300px;\n  padding: 12px;\n  border: 1px solid silver; }\n", ""]);
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 
-	// exports
+	var _react = __webpack_require__(17);
 
+	var React = _interopRequireWildcard(_react);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AboutPage = function (_React$Component) {
+	    _inherits(AboutPage, _React$Component);
+
+	    function AboutPage() {
+	        _classCallCheck(this, AboutPage);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(AboutPage).apply(this, arguments));
+	    }
+
+	    _createClass(AboutPage, [{
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, "This is About");
+	        }
+	    }]);
+
+	    return AboutPage;
+	}(React.Component);
+
+	exports.default = AboutPage;
 
 /***/ }
 /******/ ]);

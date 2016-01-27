@@ -21,12 +21,11 @@ interface State {
 }
 
 class HomePage extends React.Component<any, State> implements PageComponent {
-
-    static getStores(): Array<Store> {
+    public static getStores(): Array<Store> {
         return [HomeStore, WeatherStore];
     }
 
-    static calculateState(prevState?: State): any {
+    public static calculateState(prevState?: State): any {
         let homeState = HomeStore.getState(),
             weatherState = WeatherStore.getState();
 
@@ -40,14 +39,14 @@ class HomePage extends React.Component<any, State> implements PageComponent {
         };
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         if (!this.state.cities.length) {
             console.log("HomePage: calling API to load cities");
             HomeActions.getCities();
         }
     }
 
-    render() {
+    public render() {
         let { weathers } = this.state,
             weatherContent;
 

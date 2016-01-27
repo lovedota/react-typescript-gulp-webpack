@@ -50,7 +50,7 @@ class MainStore extends ReduceStore<any> {
         }
     }
 
-    reduce (state: Map<string, any>, action: Action): any {
+    reduce(state: Map<string, any>, action: Action): any {
         switch (action.type) {
             case "main/current":
                 let currentView = this._views.find(view => view.id.toString() === action.viewId);
@@ -59,13 +59,13 @@ class MainStore extends ReduceStore<any> {
 
             case "main/links":
                 let links = this._views.map(view => {
-                    return {viewId: view.id.toString(), viewTitle: view.title};
+                    return { viewId: view.id.toString(), viewTitle: view.title };
                 });
 
                 return state.set("links", links.toJS());
             default:
                 return state;
-         }
+        }
     }
 }
 

@@ -20,31 +20,31 @@ class HomeStore extends ReduceStore<any> {
         });
     }
 
-    reduce (state: Map<string, any>, action: Action): any {
+    reduce(state: Map<string, any>, action: Action): any {
         switch (action.type) {
             case "home/cities":
                 return state.set("isLoading", true);
 
             case "home/cities/success":
                 return state
-                        .set("isLoading", false)
-                        .set("cities", action.cities);
+                    .set("isLoading", false)
+                    .set("cities", action.cities);
 
             case "home/cities/error":
                 return state.set("isLoading", false);
 
             case "home/city/change":
                 return state
-                        .set("isLoading", true)
-                        .set("selectedCityIds", action.selectedCityIds);
+                    .set("isLoading", true)
+                    .set("selectedCityIds", action.selectedCityIds);
 
             case "home/city/weather":
                 return state
-                        .set("isLoading", false);
+                    .set("isLoading", false);
 
             default:
                 return state;
-         }
+        }
     }
 }
 

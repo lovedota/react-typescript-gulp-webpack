@@ -13,7 +13,7 @@ enum GoogleMapMode {
 }
 
 class HomeMap extends React.Component<Props, any> {
-    render() {
+    public render() {
         let places = this.props.weathers.map<Place>(weather => {
             return {
                 position: {lat: weather.coord.lat, lng: weather.coord.lon},

@@ -12,11 +12,11 @@ interface State {
 };
 
 class MainComponent extends React.Component<any, State> {
-    static getStores(): Array<Store> {
+    public static getStores(): Array<Store> {
         return [MainStore];
     }
 
-    static calculateState(prevState?: State): any {
+    public static calculateState(prevState?: State): any {
         console.log("MainComponent: calculateState");
         let state = MainStore.getState();
 
@@ -26,14 +26,14 @@ class MainComponent extends React.Component<any, State> {
         };
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         // Call actions after MainComponent init Store
         setTimeout(() => {
             MainActions.getLinks();
         });
     }
 
-    render() {
+    public render() {
         let currentView = this.state.currentView,
             rendered = currentView ? <currentView.component /> : null;
 

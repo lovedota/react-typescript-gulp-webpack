@@ -1,7 +1,7 @@
 import * as React from "react";
 
 class AboutPage extends React.Component<any, any> implements PageComponent {
-    render() {
+    public render() {
         return (
             <div>This is About</div>
         );

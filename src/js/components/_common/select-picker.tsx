@@ -14,7 +14,7 @@ interface Props {
 class SelectPicker extends React.Component<Props, any> {
     private $select: JQuery;
 
-    componentDidMount() {
+    public componentDidMount() {
         this.$select = $(ReactDOM.findDOMNode(this)).selectpicker();
 
         this.$select.selectpicker("val", this.props.defaultValue || []);
@@ -24,21 +24,21 @@ class SelectPicker extends React.Component<Props, any> {
         });
     }
 
-    componentWillUnmount() {
+    public componentWillUnmount() {
         this.$select.off("changed.bs.select");
         this.$select.selectpicker("destroy");
     }
 
-    componentDidUpdate() {
+    public componentDidUpdate() {
         this.$select.selectpicker("refresh");
     }
 
-    setValue(newValue) {
+    public setValue(newValue) {
         this.$select.selectpicker("val", newValue);
         this.$select.selectpicker("refresh");
     }
 
-    render() {
+    public render() {
         let newProps = {};
 
         for (let prop in this.props) {

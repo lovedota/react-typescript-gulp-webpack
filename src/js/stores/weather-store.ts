@@ -14,14 +14,14 @@ class WeatherStore extends ReduceStore<any> {
         });
     }
 
-    reduce (state: Map<string, any>, action: Action): any {
+    reduce(state: Map<string, any>, action: Action): any {
         switch (action.type) {
             case "home/city/weather":
                 return state.set("weathers", action.weathers);
 
             default:
                 return state;
-         }
+        }
     }
 }
 

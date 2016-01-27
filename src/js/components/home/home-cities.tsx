@@ -10,7 +10,7 @@ interface Props {
 }
 
 class HomeCities extends React.Component<Props, any> {
-    render() {
+    public render() {
         let options = [];
 
         this.props.cities.forEach(city => {

@@ -5,8 +5,7 @@ interface Props {
 }
 
 class HomeWeather extends React.Component<Props, any> {
-
-    render() {
+    public render() {
         let cityWeathers = this.props.weathers.map(weather => {
             return {
                 id: weather.id,

@@ -8,7 +8,7 @@ interface Props {
 };
 
 class MainHeader extends React.Component<Props, any> {
-    render() {
+    public render() {
         return (
             <ul className="nav nav-tabs">
             {this.props.links.map(link => (
