@@ -4,11 +4,11 @@ let source = './src',
     sourceApp = `${source}/js/`;
 
 module.exports = {
-    sourceApp: `${source}/app/`,
     tsOutputPath: `./build`,
     allJavaScript: ['./build/**/*.js'],
     allTypeScript: `${sourceApp}/**/*.{ts,tsx}`,
+    entry: `${sourceApp}/main.tsx`,
     typings: './typings',
     libraryTypeScriptDefinitions: './typings/**/*.ts',
-    dist: `./build`
+    dist: `./public/assets`
 };

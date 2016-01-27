@@ -1,8 +1,8 @@
 import * as React from "react";
+import GoogleMapMarkers from "../_common/google-map-markers";
 
 interface Props {
-    lat: number;
-    lon: number;
+    weathers: any[];
 }
 
 enum GoogleMapMode {
@@ -14,19 +14,17 @@ enum GoogleMapMode {
 
 class HomeMap extends React.Component<Props, any> {
     render() {
-        let center = `${this.props.lat},${this.props.lon}`,
-            key = "AIzaSyD2oG_njp7xIzzZabkEiQ2SAPci84d1WDA",
-            src = `https://www.google.com/maps/embed/v1/${GoogleMapMode[GoogleMapMode.view]}?center=${center}&zoom=12&key=${key}`;
+        let places = this.props.weathers.map<Place>(weather => {
+            return {
+                position: {lat: weather.coord.lat, lng: weather.coord.lon},
+                label: weather.name
+            };
+        });
 
         return (
-            <div className="embed-responsive embed-responsive-16by9">
-                <iframe
-                  width="600"
-                  height="450"
-                  src={src}
-                >
-                </iframe>
-            </div>
+            <GoogleMapMarkers
+                places={places}
+            />
         );
     }
 }

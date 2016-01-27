@@ -1,0 +1,15 @@
+$class: home-page;
+
+.#{$class} {
+  .map {
+    width: 700px;
+    height: 400px;
+    margin-right: 20px;
+  }
+
+  .weather {
+    width: 300px;
+    padding: 12px;
+    border: 1px solid silver;
+  }
+}

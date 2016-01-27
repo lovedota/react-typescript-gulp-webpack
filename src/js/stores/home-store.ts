@@ -6,15 +6,15 @@ import { Map, List } from "immutable";
 interface Action extends BaseAction {
     cities: City[];
     error: any;
-    selectedCityId: string;
+    selectedCityIds: string;
     weather: any;
 }
 
-class MainStore extends ReduceStore<any> {
+class HomeStore extends ReduceStore<any> {
     getInitialState(): any {
         return Map<string, any>({
             cities: <City[]>[],
-            selectedCityId: null,
+            selectedCityIds: [],
             isLoading: false,
             weather: null
         });
@@ -36,12 +36,11 @@ class MainStore extends ReduceStore<any> {
             case "home/city/change":
                 return state
                         .set("isLoading", true)
-                        .set("selectedCityId", action.selectedCityId);
+                        .set("selectedCityIds", action.selectedCityIds);
 
             case "home/city/weather":
                 return state
-                        .set("isLoading", false)
-                        .set("weather", action.weather);
+                        .set("isLoading", false);
 
             default:
                 return state;
@@ -49,4 +48,4 @@ class MainStore extends ReduceStore<any> {
     }
 }
 
-export default new MainStore(Dispatcher);
+export default new HomeStore(Dispatcher);

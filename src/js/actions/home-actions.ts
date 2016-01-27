@@ -1,5 +1,8 @@
 import { dispatch } from "../dispatcher/app-dispatcher";
-import * as $ from "jquery";
+
+const
+    citiesWeatherApi = "http://api.openweathermap.org/data/2.5/group",
+    appId = "44db6a862fba0b067b1930da0d769e98";
 
 export default {
     getCities() {
@@ -14,13 +17,13 @@ export default {
             });
     },
 
-    changeCity(selectedCityId: string) {
-        dispatch({type: "home/city/change", selectedCityId});
+    changeCities(selectedCityIds: string[]) {
+        dispatch({type: "home/city/change", selectedCityIds});
 
-        $.get(`http://api.openweathermap.org/data/2.5/weather?id=${selectedCityId}&units=metric&appid=2de143494c0b295cca9337e1e96b00e0`)
+        $.ajax(`${citiesWeatherApi}?id=${selectedCityIds.join(",")}&units=metric&appid=${appId}`, {crossDomain: true})
             .done((data: any) => {
                 console.log(data);
-                dispatch({type: "home/city/weather", weather: data});
+                dispatch({type: "home/city/weather", weathers: data.list});
             });
     }
 };

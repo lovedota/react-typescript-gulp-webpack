@@ -1,9 +1,14 @@
+import "./css/home-page.scss";
+
 import * as React from "react";
 import {Store} from "flux/utils";
 import {Container} from "flux/utils";
 
 import HomeStore from "../../stores/home-store";
+import WeatherStore from "../../stores/weather-store";
+
 import HomeActions from "../../actions/home-actions";
+
 import HomeCities from "./home-cities";
 import HomeMap from "./home-map";
 import HomeWeather from "./home-weather";
@@ -11,24 +16,27 @@ import HomeWeather from "./home-weather";
 interface State {
     cities: City[];
     isLoading: boolean;
-    selectedCityId: string;
-    weather: any;
+    selectedCityIds: string;
+    weathers: any;
 }
 
 class HomePage extends React.Component<any, State> implements PageComponent {
 
     static getStores(): Array<Store> {
-        return [HomeStore];
+        return [HomeStore, WeatherStore];
     }
 
     static calculateState(prevState?: State): any {
-        let state = HomeStore.getState();
+        let homeState = HomeStore.getState(),
+            weatherState = WeatherStore.getState();
+
+        console.log("HomePage: calculateState");
 
         return {
-            isLoading: state.get("isLoading"),
-            cities: state.get("cities"),
-            selectedCityId: state.get("selectedCityId"),
-            weather: state.get("weather")
+            isLoading: homeState.get("isLoading"),
+            cities: homeState.get("cities"),
+            selectedCityIds: homeState.get("selectedCityIds"),
+            weathers: weatherState.get("weathers")
         };
     }
 
@@ -39,35 +47,34 @@ class HomePage extends React.Component<any, State> implements PageComponent {
         }
     }
 
-    onCityChanged(event: React.SyntheticEvent) {
-        HomeActions.changeCity(event.target["value"]);
-    }
-
     render() {
-        let { weather } = this.state,
+        let { weathers } = this.state,
             weatherContent;
 
-        if (weather) {
+        if (weathers.length) {
             weatherContent = (
-                <div className="well">
-                    <HomeWeather
-                        weather={weather.weather[0]}
-                        main={weather.main}
-                    />
-                    <HomeMap
-                        lat={weather.coord.lat}
-                        lon={weather.coord.lon}
-                    />
+                <div>
+                    <div className="map pull-left">
+                        <HomeMap
+                            weathers={weathers}
+                        />
+                    </div>
+
+                    <div className="weather pull-left">
+                        <HomeWeather
+                            weathers={weathers}
+                        />
+                    </div>
                 </div>
             );
         }
 
         return (
-            <div>
+            <div className="home-page">
                 <h3>City Weather Forecast</h3>
                 <HomeCities
                     cities={this.state.cities}
-                    selectedCityId={this.state.selectedCityId}
+                    selectedCityIds={this.state.selectedCityIds}
                     isDisabled={this.state.isLoading}
                 />
                 <hr/>

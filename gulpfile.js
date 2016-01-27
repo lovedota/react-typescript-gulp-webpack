@@ -4,20 +4,15 @@ var gulp = require('gulp'),
     webpack = require('gulp-webpack'),
     debug = require('gulp-debug'),
     inject = require('gulp-inject'),
-    tsc = require('gulp-typescript'),
-    sourcemaps = require('gulp-sourcemaps'),
     del = require('del'),
     config = require('./gulpfile.config'),
     browserSync = require('browser-sync'),
     superstatic = require('superstatic'),
     typescript = require('typescript'),
-    path = require('path'),
-    tsProject;
-
-tsProject = tsc.createProject('tsconfig.json', { typescript: typescript });
+    path = require('path');
 
 /**
- * Generates file list and definition list into tsconfig.json.
+ * Generates file list and definition list into tsconfig.json. Atom auto do it
  */
 gulp.task('gen-ts-refs', () => {
     var target = gulp.src('./tsconfig.json');
@@ -30,86 +25,71 @@ gulp.task('gen-ts-refs', () => {
         starttag: '"files": [',
         endtag: ']',
         transform(filePath, file, i, length) {
-            return `".${filePath}" ${(i + 1 < length ? ',' : '')}`;
+            return `'.${filePath}' ${(i + 1 < length ? ',' : '')}`;
         }
     })).pipe(gulp.dest('./'));
 });
 
-/**
- * Compile TypeScript and include references to library and app .d.ts files.
- */
-gulp.task('compile-ts', () => {
-    var sourceTsFiles = [config.allTypeScript,                //path to typescript files
-        config.libraryTypeScriptDefinitions]; //reference to library .d.ts files
-
-
-    var tsResult = gulp.src(sourceTsFiles)
-        .pipe(sourcemaps.init())
-        .pipe(tsc(tsProject));
-
-    tsResult.dts.pipe(gulp.dest(config.tsOutputPath));
-
-    return tsResult.js
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(config.tsOutputPath));
-});
-
-/**
- * Remove all generated JavaScript files from TypeScript compilation.
- */
-gulp.task('clean-ts', (cb) => {
-    var typeScriptGenFiles = [
-        config.tsOutputPath + '/**/*.js',    // path to all JS files auto gen'd by editor
-        config.tsOutputPath + '/**/*.js.map', // path to all sourcemap files auto gen'd by editor
-        '!' + config.tsOutputPath + '/lib'
-    ];
-
-    // delete the files
-    del(typeScriptGenFiles, cb);
-});
 
 gulp.task('watch', () => {
     gulp.watch([config.allTypeScript], ['bundle']);
 });
 
-gulp.task('bundle', ['compile-ts'], () => {
+gulp.task('bundle', () => {
     return gulp
-        .src(config.allJavaScript)
+        .src(config.entry)
         .pipe(webpack({
             entry: {
-                bundle: `${config.tsOutputPath}/main.js`
+                bundle: config.entry
             },
             output: {
                 filename: '[name].js',
+                publicPath: '/assets/'
             },
             module: {
               loaders: [
                 {
-                    test: /\.jsx?$/,
-                    exclude: /(node_modules|bower_components)/,
-                    loader: 'babel', // 'babel-loader' is also a legal name to reference
-                    query: {
-                        presets: ['react', 'es2015']
-                    }
+                   test: /\.ts(x?)$/,
+                   loaders: ['babel', 'ts'],
+                   exclude: /(node_modules|bower_components)/
                 },
                 {
                     test: /\.scss$/,
-                    loaders: ["style", "css", "sass"]
+                    loaders: ['style', 'css', 'sass']
                 },
                 {
                     test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-                    loader: 'url-loader?limit=10000'
+                    loader: 'url?limit=10000'
+                },
+                {
+                    test: require.resolve('jquery'),
+                    loader: 'expose?$!expose?jQuery'
+                },
+                {
+                    test: /\.less$/,
+                    loaders: ['style', 'css', 'less']
                 }
               ]
             },
             sassLoader: {
-                includePaths: [path.resolve(__dirname, "./node_modules")]
-            }
+                includePaths: [path.resolve(__dirname, './node_modules')]
+            },
+            //devtool: 'inline-source-map',
+            resolve: {
+               extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
+               alias: {
+                   'bootstrap/js': 'bootstrap-sass/assets/javascripts/bootstrap.js',
+                   'bootstrap/css': 'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
+                   'bootstrap-select/js': 'bootstrap-select/js/bootstrap-select.js',
+                   'bootstrap-select/css': 'bootstrap-select/sass/bootstrap-select.scss'
+               }
+            },
+            watch: true
         }))
         .pipe(gulp.dest(config.dist))
 });
 
-gulp.task('serve', ['bundle', 'watch'], () => {
+gulp.task('serve', () => {
     console.log('Starting browserSync and superstatic...\n');
 
     browserSync({
@@ -122,10 +102,10 @@ gulp.task('serve', ['bundle', 'watch'], () => {
         notify: true,
         reloadDelay: 200,
         server: {
-            baseDir: './',
+            baseDir: './public',
             middleware: superstatic({ debug: false })
         }
     });
 });
 
-gulp.task('default', ['bundle']);
+gulp.task('default', ['serve', 'bundle']);

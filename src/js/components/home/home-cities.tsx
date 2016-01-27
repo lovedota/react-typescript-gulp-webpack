@@ -1,18 +1,17 @@
 import * as React from "react";
 
+import SelectPicker from "../_common/select-picker";
 import HomeActions from "../../actions/home-actions";
 
 interface Props {
     cities: City[];
     isDisabled: boolean;
-    selectedCityId: string;
+    selectedCityIds: string;
 }
 
 class HomeCities extends React.Component<Props, any> {
     render() {
-        let options = [
-            <option key="default">Select City</option>
-        ];
+        let options = [];
 
         this.props.cities.forEach(city => {
             options.push(
@@ -25,19 +24,22 @@ class HomeCities extends React.Component<Props, any> {
 
         return (
             <div>
-                <select
+                <SelectPicker
+                    className="form-control"
+                    title="Select Cities"
+                    multiple
                     disabled={this.props.isDisabled}
-                    value={this.props.selectedCityId}
-                    onChange={this.onCityChanged.bind(this)}
+                    defaultValue={this.props.selectedCityIds}
+                    onChange={this.onChange.bind(this)}
                 >
                     {options}
-                </select>
+                </SelectPicker>
             </div>
         );
     }
 
-    private onCityChanged(event: React.SyntheticEvent) {
-        HomeActions.changeCity(event.target["value"]);
+    private onChange(value: string[]) {
+        HomeActions.changeCities(value);
     }
 }
 

@@ -1,4 +1,8 @@
-import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+import "jquery";
+import "bootstrap/js";
+import "bootstrap/css";
+import "bootstrap-select/js";
+import "bootstrap-select/css";
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
