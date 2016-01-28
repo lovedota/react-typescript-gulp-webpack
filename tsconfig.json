@@ -6,7 +6,8 @@
         "module": "es2015",
         "jsx": "react",
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "sourceMap": true
     },
     "filesGlob": [
         "**/*.ts",
@@ -21,12 +22,14 @@
         "src/js/actions/main-actions.ts",
         "src/js/dispatcher/app-dispatcher.ts",
         "src/js/global.d.ts",
-        "src/js/stores/home-store.ts",
+        "src/js/stores/home/home-city-store.ts",
+        "src/js/stores/home/home-weather-store.ts",
         "src/js/stores/main-store.ts",
-        "src/js/stores/weather-store.ts",
         "src/js/utils/custom-type.ts",
         "src/js/utils/google-map-helpers.ts",
+        "src/modules/block-ui.d.ts",
         "src/modules/bootstrap-select.d.ts",
+        "src/modules/classnames.d.ts",
         "src/modules/react-bootstrap.d.ts",
         "typings/flux/flux.d.ts",
         "typings/immutable/immutable.d.ts",

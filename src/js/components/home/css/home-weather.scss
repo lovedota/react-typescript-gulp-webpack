@@ -1,0 +1,13 @@
+$class: home-weather;
+
+.#{$class} {
+    .media {
+        padding: 8px 4px 0;
+        cursor: pointer;
+
+        &.active {
+          color: #fff;
+          background-color: #337ab7;
+        }
+    }
+}

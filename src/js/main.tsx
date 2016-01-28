@@ -1,8 +1,15 @@
 import "jquery";
+import "block-ui";
 import "bootstrap/js";
 import "bootstrap/css";
 import "bootstrap-select/js";
 import "bootstrap-select/css";
+
+$.blockUI.defaults.message = "Loading...";
+$.blockUI.defaults.css = {
+   border: "none",
+   "background-color": "transparent"
+};
 
  /* tslint:disable:no-unused-variable */
 import * as React from "react";

@@ -1,5 +1,5 @@
 import {ReduceStore} from "flux/utils";
-import Dispatcher from "../dispatcher/app-dispatcher";
+import Dispatcher from "../../dispatcher/app-dispatcher";
 
 import { Map } from "immutable";
 
@@ -10,7 +10,7 @@ interface Action extends BaseAction {
     weather: any;
 }
 
-class HomeStore extends ReduceStore<any> {
+class HomeCityStore extends ReduceStore<any> {
     public getInitialState(): any {
         return Map<string, any>({
             cities: <City[]>[],
@@ -38,8 +38,8 @@ class HomeStore extends ReduceStore<any> {
                     .set("isLoading", true)
                     .set("selectedCityIds", action.selectedCityIds);
 
-            case "home/city/weather/success":
-            case "home/city/weather/error":
+            case "home/weather/success":
+            case "home/weather/error":
                 return state
                     .set("isLoading", false);
 
@@ -49,4 +49,4 @@ class HomeStore extends ReduceStore<any> {
     }
 }
 
-export default new HomeStore(Dispatcher);
+export default new HomeCityStore(Dispatcher);

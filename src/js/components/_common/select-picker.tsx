@@ -38,6 +38,10 @@ class SelectPicker extends React.Component<Props, any> {
         this.$select.selectpicker("refresh");
     }
 
+    public hide() {
+        this.$select.parent("div.bootstrap-select").removeClass("open");
+    }
+
     public render() {
         let newProps = {};
 

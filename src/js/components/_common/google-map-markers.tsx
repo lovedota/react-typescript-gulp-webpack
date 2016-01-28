@@ -12,7 +12,7 @@ class GoogleMapMarkers extends React.Component<Props, any> {
     public componentDidMount() {
         GoogleMapHelpers.loadMap().then(() => {
             let defaultOptions = {
-                    zoom: 12,
+                    zoom: 6,
                     center: new window.google.maps.LatLng(49.47805, -123.84716),
                     mapTypeId: window.google.maps.MapTypeId.ROADMAP
                 };
@@ -24,6 +24,11 @@ class GoogleMapMarkers extends React.Component<Props, any> {
 
     public componentDidUpdate() {
         this.processMarkers(this.props.places);
+    }
+
+    public setCenter(postion, zoom = 15) {
+        this.$map.setZoom(zoom);
+        this.$map.setCenter(postion);
     }
 
     public render() {

@@ -32,3 +32,20 @@ interface Window {
     google: any;
     googleMapInitialize: () => void;
 }
+
+interface CityMain {
+    temp: number;
+}
+
+interface Weather {
+    icon: string;
+    description: string;
+}
+
+interface CityWeather {
+    id: string;
+    coord: WeatherCoordinate;
+    main: CityMain;
+    name: string;
+    weather: Weather;
+}

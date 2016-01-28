@@ -6,10 +6,17 @@ import HomeActions from "../../actions/home-actions";
 interface Props {
     cities: City[];
     isDisabled: boolean;
-    selectedCityIds: string;
+    selectedCityIds: string[];
+}
+
+interface Refs {
+    [key: string]: any;
+    selectPicker: SelectPicker;
 }
 
 class HomeCities extends React.Component<Props, any> {
+    public refs: Refs;
+
     public render() {
         let options = [];
 
@@ -25,6 +32,7 @@ class HomeCities extends React.Component<Props, any> {
         return (
             <div>
                 <SelectPicker
+                    ref="selectPicker"
                     className="form-control"
                     title="Select Cities"
                     multiple
@@ -39,6 +47,7 @@ class HomeCities extends React.Component<Props, any> {
     }
 
     private onChange(value: string[]) {
+        this.refs.selectPicker.hide();
         HomeActions.changeCities(value);
     }
 }

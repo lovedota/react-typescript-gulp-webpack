@@ -1,34 +1,54 @@
+import "./css/home-weather.scss";
+
 import * as React from "react";
+import classNames from "classnames";
+
+import HomeActions from "../../actions/home-actions";
+
+import { List } from "immutable";
 
 interface Props {
-    weathers: any[];
+    citiesWeather: List<CityWeather>;
+    selectedWeatherId: string;
 }
 
 class HomeWeather extends React.Component<Props, any> {
+    public shouldComponentUpdate(nextProps: Props) {
+        return (this.props.selectedWeatherId !== nextProps.selectedWeatherId) ||
+               (this.props.citiesWeather !== nextProps.citiesWeather);
+    }
+
     public render() {
-        let cityWeathers = this.props.weathers.map(weather => {
-            return {
-                id: weather.id,
-                main: weather.main,
-                weather: weather.weather[0],
-                name: weather.name
-            };
-        });
+        let citiesWeather = this.props.citiesWeather.map(weather => {
+                return {
+                    id: weather.id,
+                    main: weather.main,
+                    weather: weather.weather[0],
+                    name: weather.name
+                };
+            }),
+            selectedWeatherId = this.props.selectedWeatherId;
+
+        console.log("HomeWeather render");
 
         return (
-            <div>
-                {cityWeathers.map(cityWeather => {
+            <div className="home-weather">
+                {citiesWeather.map(city => {
                     return (
-                        <div className="media" key={cityWeather.id}>
+                        <div
+                            className={classNames("media", {"active": selectedWeatherId === city.id})}
+                            key={city.id}
+                            onClick={this.onWeatherClick.bind(this, city.id)}
+                        >
                             <div className="media-left">
-                                <img src={`http://openweathermap.org/img/w/${cityWeather.weather.icon}.png`} />
+                                <img src={`http://openweathermap.org/img/w/${city.weather.icon}.png`} />
                             </div>
                             <div className="media-body">
                                 <h6 className="media-heading">
-                                    {cityWeather.name} &nbsp;
-                                    <em>{cityWeather.weather.main} {cityWeather.main.temp} °C</em>
+                                    {city.name} &nbsp;
+                                    <em>{city.weather.main} {city.main.temp} °C</em>
                                 </h6>
-                                {cityWeather.weather.description}
+                                {city.weather.description}
                             </div>
                         </div>
                     );
@@ -36,6 +56,10 @@ class HomeWeather extends React.Component<Props, any> {
             </div>
 
         );
+    }
+
+    private onWeatherClick(weatherId: string) {
+        HomeActions.changeSelectedWeather(weatherId);
     }
 }
 

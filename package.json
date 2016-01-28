@@ -10,6 +10,7 @@
   "license": "ISC",
   "typings": "./typings/tsd.d.ts",
   "dependencies": {
+    "block-ui": "^2.70.1",
     "bootstrap-sass": "^3.3.6",
     "bootstrap-select": "^1.9.4",
     "classnames": "^2.2.3",
